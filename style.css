@@ -342,6 +342,102 @@ span{
     left: -15px;
 }
 
+@media (max-width: 1200px) {
+    .education .heading {
+      font-size: 2.2rem;
+    }
+    .timeline {
+      max-width: 1000px;
+    }
+    .container {
+      padding: 10px 20px;
+    }
+  }
+
+
+  /* Breakpoint for screens <= 991px */
+@media (max-width: 991px) {
+    .education .heading {
+      font-size: 2rem;
+    }
+    .container img {
+      width: 90px;
+    }
+    .timeline::after {
+      left: 55%;
+    }
+    .right-container {
+      left: 55%;
+    }
+  }
+
+
+  /* Breakpoint for screens <= 768px */
+@media (max-width: 768px) {
+    .container img {
+      width: 70px; /* Smaller logo size for tablets */
+      height: auto;
+    }
+  }
+  
+  /* Breakpoint for screens <= 617px */
+  @media (max-width: 617px) {
+    .container img {
+      width: 60px; /* Further reduce logo size for smaller devices */
+      height: auto;
+    }
+  }
+  
+  /* Breakpoint for screens <= 480px */
+  @media (max-width: 480px) {
+    .container img {
+      width: 50px; /* Optimal size for mobile phones */
+      height: auto;
+    }
+  }
+  
+  /* Breakpoint for screens <= 450px */
+  @media (max-width: 450px) {
+    .container img {
+      width: 45px; /* Slightly smaller logo for narrow devices */
+      height: auto;
+    }
+  }
+  
+  /* Breakpoint for screens <= 365px */
+  @media (max-width: 365px) {
+    .container img {
+      width: 40px; /* Smallest size for very small screens */
+      height: auto;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -46,52 +46,66 @@ ScrollReveal().reveal('.home-content, .heading',{origin: 'top'});
 ScrollReveal().reveal('.home-img, .skills, .portfolio-box, .contact form',{origin: 'bottom'});
 ScrollReveal().reveal('.home-content h1, .about-img',{origin: 'left'});
 ScrollReveal().reveal('.home-content p, .about-content',{origin: 'right'});
+// Initialize ScrollReveal
+
+ScrollReveal().reveal('.left-container', {
+    origin: 'top',
+    distance: '50px',
+    duration: 1000,
+    delay: 200,
+    easing: 'ease-in-out',
+    reset: false
+  });
+
+  ScrollReveal().reveal('.right-container', {
+    origin: 'top',
+    distance: '50px',
+    duration: 1000,
+    delay: 400,
+    easing: 'ease-in-out',
+    reset: false
+  });
+
+
+
+  ScrollReveal().reveal('.container', {
+    origin: 'bottom',
+    distance: '50px',
+    duration: 1000,
+    easing: 'ease-in-out',
+    interval: 200,
+    //reset: true
+  });
+
+  // Reveal the entire skills-container
+ScrollReveal().reveal('.skills-container', {
+    origin: 'bottom',
+    distance: '100px',
+    duration: 1200,
+    easing: 'ease-in-out',
+    //reset: true
+  });
+
+  // Reveal each skill in the skills-container
+ScrollReveal().reveal('.skill', {
+    origin: 'bottom',
+    distance: '50px',
+    duration: 1000,
+    easing: 'ease-in-out',
+    interval: 200,
+    //reset: true
+  });
+
+  
 
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Hide the success message on page load
-    document.getElementById('status-message').style.display = 'none';
 
-    // Handle the form submission
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission and page reload
+  
+  
 
-        // Send email using EmailJS
-        emailjs.sendForm('service_1slqhns', 'template_rw58gq4', this)
-            .then(function(response) {
-                console.log('Message sent to you:', response.status, response.text);
-
-                // After sending the first email, send the thank-you email to the user
-                const userName = document.querySelector('[name="from_name"]').value;
-                const userEmail = document.querySelector('[name="from_email"]').value; // User's email
-
-                emailjs.send('service_1slqhns', 'template_12c5wba', {
-                    to_name: userName,
-                    to_email: userEmail
-                }).then(function(response) {
-                    console.log('Thank You email sent to user!', response.status, response.text);
-
-                    // Show success message
-                    document.getElementById('status-message').style.display = 'block';
-
-                    // Optionally, you can clear the form after submission
-                    document.getElementById('contact-form').reset();
-
-                }, function(error) {
-                    console.log('Failed to send thank you email...', error);
-                });
-
-            }, function(error) {
-                console.log('Failed to send message...', error);
-                alert('Failed to send message, please try again later.');
-            });
-    });
-});
-
-
-
+  
 
 
 
