@@ -96,11 +96,140 @@ ScrollReveal().reveal('.skill', {
     //reset: true
   });
 
+  ScrollReveal().reveal('.left-container', {
+    origin: 'left',
+    distance: '100px',
+    duration: 1000,
+    //reset: true,
+    opacity: 0,
+    easing: 'ease-in-out',
+    interval: 200
+  });
+
+  ScrollReveal().reveal('.right-container', {
+    origin: 'right',
+    distance: '100px',
+    duration: 1000,
+    //reset: true,
+    opacity: 0,
+    easing: 'ease-in-out',
+    interval: 200
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const containers = document.querySelectorAll('.container');
+
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target); // Stop observing if you don't want the animation to repeat
+        }
+      });
+    }, observerOptions);
+
+    containers.forEach(container => {
+      observer.observe(container);
+    });
+  });
   
 
+  ScrollReveal().reveal('.Contact h2', {
+    origin: 'top', // Animation direction (top, bottom, left, right)
+    distance: '50px', // How far the element moves
+    duration: 1000, // Animation duration (in ms)
+    delay: 200, // Delay before animation starts (in ms)
+    //reset: true // Elements will reanimate every time they come into view
+  });
 
 
+  ScrollReveal().reveal('.Contact form .input-box input', {
+    origin: 'left',
+    distance: '50px',
+    duration: 1000,
+    delay: 300,
+    //reset: true,
+    interval: 200 // Stagger the animation for multiple elements
+  });
 
+  ScrollReveal().reveal('.Contact form textarea', {
+    origin: 'right',
+    distance: '50px',
+    duration: 1000,
+    delay: 400,
+    //reset: true
+  });
+
+  ScrollReveal().reveal('.Contact form .btn', {
+    origin: 'bottom',
+    distance: '50px',
+    duration: 1000,
+    delay: 500,
+    //reset: true
+  });
+
+
+  
+  
+  (function(){
+    emailjs.init({
+      publicKey: "vOlLwoy6ARmPSoaYy",
+    });
+ })();
+
+ document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Collect form data
+  const formData = {
+    from_name: document.querySelector('input[name="from_name"]').value,
+    from_email: document.querySelector('input[name="from_email"]').value,
+    from_mobile: document.querySelector('input[name="from_mobile"]').value,
+    email_subject: document.querySelector('input[name="email_subject"]').value,
+    message: document.querySelector('textarea[name="message"]').value
+  };
+
+  // Send the user's message
+  emailjs.send('service_1slqhns', 'template_rw58gq4', formData) // Your service ID and user message template ID
+    .then(function(response) {
+      // Send a thank-you email to the user
+      const thankYouData = {
+        user_name: formData.from_name,
+        to_email: formData.from_email // Use the user's email here
+      };
+
+      // Send thank-you email using the same service ID and the thank-you template ID
+      emailjs.send('service_1slqhns', 'template_12c5wba', thankYouData) // Using your thank-you template ID
+        .then(function() {
+          // Display success message using SweetAlert
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: 'Your message has been successfully sent! Thanks for getting in touch. Please keep an eye out for more details in your email.',
+            confirmButtonText: 'OK'
+          });
+        })
+        .catch(function(error) {
+          console.error('Failed to send the thank-you email:', error);
+        });
+
+    }, function(error) {
+      // Log the error for debugging
+      console.error('Failed to send the email:', error);
+
+      // Display error message using SweetAlert
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Failed to send the message. Please try again later.',
+        confirmButtonText: 'OK'
+      });
+    });
+});
 
   
   
