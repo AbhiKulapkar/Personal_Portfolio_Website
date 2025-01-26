@@ -241,7 +241,7 @@ ScrollReveal().reveal('.skill', {
 
 
 const typed = new Typed('.multiple-text', {
-    strings: ['Software Engineer', 'Data Science Engineer'],
+    strings: ['Software Engineer'],
     typeSpeed: 90,
     backSpeed: 50,
     loop: true,
