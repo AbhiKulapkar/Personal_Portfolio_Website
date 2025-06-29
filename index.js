@@ -46,6 +46,7 @@ ScrollReveal().reveal('.home-content, .heading',{origin: 'top'});
 ScrollReveal().reveal('.home-img, .skills, .portfolio-box, .contact form',{origin: 'bottom'});
 ScrollReveal().reveal('.home-content h1, .about-img',{origin: 'left'});
 ScrollReveal().reveal('.home-content p, .about-content',{origin: 'right'});
+ScrollReveal().reveal('.portfolio-box', {origin: 'bottom'});
 // Initialize ScrollReveal
 
 ScrollReveal().reveal('.left-container', {
@@ -250,5 +251,38 @@ const typed = new Typed('.multiple-text', {
     smartBackspace: true,
     startDelay: 1000,
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const swiper = new Swiper(".portfolio-slider", {
+  loop: true,
+  grabCursor: true,
+  spaceBetween: 20,
+  slidesPerView: 1, // Important: starts with 1
+  centeredSlides: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
+});
+  
+
+
 
 
